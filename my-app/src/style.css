@@ -1,0 +1,13 @@
+img#gaNavbarLogo {
+    width: 200px;
+  }
+  
+  div.ga-container {
+    padding: 16px;
+  }
+  
+  div#gaTab-content iframe {
+    border: none;
+    width: auto;
+  }
+  
