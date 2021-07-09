@@ -1,9 +1,16 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'pipeline'
+    }
+
+  }
   stages {
     stage('Test') {
-      steps {
-        sh '''set +x
+      parallel {
+        stage('Test') {
+          steps {
+            sh '''set +x
 info() {
 echo "\\033[1;33m[Info]    \\033[0m $1"
 }
@@ -40,8 +47,26 @@ echo "\\033[1;31m Red \\033[0m"
 echo "\\033[1;4;37;42m Green \\033[0m"
 echo "\\033[1;43m Yellow \\033[0m"
 set -x'''
+          }
+        }
+
+        stage('Checkout') {
+          steps {
+            echo 'Checkout repository'
+          }
+        }
+
+        stage('Build And Test') {
+          steps {
+            echo 'Building job'
+          }
+        }
+
       }
     }
 
+  }
+  environment {
+    displayName = '${env.BUILD_NUMBER}: '
   }
 }
