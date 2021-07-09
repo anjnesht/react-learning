@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            sh '''set +x
+            #!/bin/bash +x
 info() {
 echo "\\033[1;33m[Info]    \\033[0m $1"
 }
@@ -41,7 +41,6 @@ echo "Different combinations"
 echo "\\033[1;31m Red \\033[0m"
 echo "\\033[1;4;37;42m Green \\033[0m"
 echo "\\033[1;43m Yellow \\033[0m"
-set -x'''
           }
         }
 
