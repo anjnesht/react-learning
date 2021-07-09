@@ -7,7 +7,7 @@ pipeline {
           steps {
             sh '''set +x
 info() {
-echo "\\033[1;33m[Info]    \\033[0m $1"
+echo "\\033[36m Cyan \\033[0m"
 }
 error() {
 echo "\\033[1;31m[Error]   \\033[0m $1"
