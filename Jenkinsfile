@@ -61,7 +61,4 @@ set -x'''
     }
 
   }
-  environment {
-    displayName = '${env.BUILD_NUMBER}: '
-  }
 }
