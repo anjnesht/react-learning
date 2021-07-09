@@ -5,24 +5,20 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            /bin/bash +x
+            #!/bin/bash +x
+            sh '''set +x
 info() {
 echo "\\033[1;33m[Info]    \\033[0m $1"
 }
 error() {
 echo "\\033[1;31m[Error]   \\033[0m $1"
 }
-
-
 success() {
 echo "\\033[1;32m[Success] \\033[0m $1"
 }
-
-
 info "This is information message"
 error "Houston we have a problem"
 success "Great!!!"
-
 echo "Foreground colors"
 echo "\\033[31m Red \\033[0m"
 echo "\\033[32m Green \\033[0m"
@@ -41,6 +37,7 @@ echo "Different combinations"
 echo "\\033[1;31m Red \\033[0m"
 echo "\\033[1;4;37;42m Green \\033[0m"
 echo "\\033[1;43m Yellow \\033[0m"
+set -x'''
           }
         }
 
