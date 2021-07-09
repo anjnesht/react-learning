@@ -5,7 +5,6 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            !/bin/bash +x
             sh '''set +x
 info() {
 echo "\\033[1;33m[Info]    \\033[0m $1"
