@@ -1,15 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Fetch Repo') {
-      steps {
-        echo 'Fetching Repository'
-        ansiColor(colorMapName: 'red') {
-          echo 'Checking color input'
+    stage('Checkout') {
+        timestamps {
+            container("${containerName}") {
+                ansiColor('xterm') {
+                    checkout scm
+                }
+            }
         }
-
-      }
-    }
-
+     }
   }
 }
